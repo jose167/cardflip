@@ -44,6 +44,7 @@
             height: 250px;
             backface-visibility: hidden;
             width: 100%;
+            transition: opacity 500ms linear;
         }
         
         #card-img {
@@ -158,16 +159,20 @@ Scroll-box */
             background-color: #E0E0E0;
         }
 
-        .joinNow-btn:active ~ .btn-overlay  {
+        .btn-overlay{
+                display: none;
+        }
+
+        .joinNow-btn:active ~ .btn-overlay, .findOutMore-btn:active ~ .btn-overlay {
+            display: block;
             position: absolute;
             padding: 5px;
             bottom: 4px;
             left: 0;
             width: 41%;
             height: 35%;
-            background-color: #0fa4c5;
-            opacity: 0.3;
-            transition: opacity .5s;
+            background-color: #0f73c526;;
+            z-index: 2;
             border: 2px solid #0f738a;
             z-index: 3;
         }
@@ -210,7 +215,7 @@ Scroll-box */
         .joinNowBack-btn{
             padding: 5px 20px 5px 20px;
             text-transform: uppercase;
-            background-color: #FDBE0F;
+            background-color: #ffcd11;
         }
 /*
 *
@@ -279,28 +284,39 @@ Scroll-box */
             #header > p {
                 font-size: 2.2em;
             }
-            div.a {
-                position: absolute;
-                top: 0;
-                width: 150px;
-                height: 60px;
-                background-color: yellow;
-                transform: rotate(40deg);
-                }
+  
             
             .joinNow-btn:active ~ .btn-overlay, .findOutMore-btn:active ~ .btn-overlay {
-                position: absolute;
                 padding: 7px;
                 bottom: 4px;
                 left: 0;
                 width: 25%;
                 height: 50%;
-                background-color: #0fa4c5;
-                opacity: 0.5;
-                transition: opacity .8s;
+                background-color: #0f73c526;;
                 z-index: 2;
-                 border: 2px solid #0f738a;
+                border: 2px solid #0f738a;
             }
+            .new-shape {
+                position: absolute;
+                top: 0;
+                width:100%;
+                height:100%;
+                background: #ffcd11;
+                shape-outside: polygon(378px 99px, 378px 49px, 323px 0px, 265px -1px); 
+                clip-path:polygon(378px 99px, 378px 49px, 323px 0px, 265px -1px);
+                }
+            .new-text {
+                position: absolute;
+                right: 1%;
+                z-index: 2;
+                top: 10%;
+                font-size: 25px;
+                font-weight: 900;
+                transform: rotate(40deg);
+            }
+
+
+
         }
 
       /*
@@ -323,6 +339,14 @@ Scroll-box */
                 }
             }
           */  
+       
+
+.hide {
+    opacity: 0;
+}
+.remove {
+    display: none;
+}
 
       
       </style>
@@ -331,12 +355,23 @@ Scroll-box */
             var card = document.querySelector('.card-inner');
             var buttonFront =  document.getElementById("tsCs-btn");
             var buttonBack =  document.querySelector(".back-btn");
-            console.log(card);
+            var frontFace = document.getElementById("card-container-front");
+
+
             buttonFront.addEventListener( 'click', function() {
                 card.classList.add('is-flipped');
+                frontFace.classList.add('hide');
+                setTimeout(
+                    function Remove() {
+                        frontFace.classList.add("remove");
+                    },
+                    500 );
+
             });
             buttonBack.addEventListener( 'click', function() {
-                card.classList.add('is-flipped');
+                frontFace.classList.remove("remove");
+                frontFace.classList.remove('hide');
+                card.classList.remove('is-flipped');
             });
         });
       </script>
@@ -345,6 +380,8 @@ Scroll-box */
             <div id="card-container-front">
                 <div id="card-img"></div>
                 <div id="card-text">
+                    <span class="new-text">NEW</span>
+                    <div class="new-shape"></div>
                     <div id="header">
                         <h1>Betbright casino</h1>
                         <p>£1000 Bonus</p>
@@ -395,7 +432,7 @@ Scroll-box */
                     </div>       
                 </div>
                 <div id="buttons">
-                    <button class="back-btn" id="tsCs-btn" onclick="">
+                    <button class="back-btn">
                         <img src='arrow2.png'>
                         <span>Back</span>
                     </button>                
