@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, p {
 #card-img {
   width: 35%;
   position: relative;
-  background-image: url("small-cube.jpg");
+  background-image: url("imgs/small-cube.jpg");
   background-size: cover;
 
 }
@@ -256,14 +256,14 @@ h1, h2, h3, h4, h5, p {
     transform-style: preserve-3d;
    
 }
-
+/*
 .card-inner.is-flipped{
     transform: rotateY(180deg);
 }
 .card-inner.is-flipped2{
     transform: rotateY(360deg);
 }
-
+*/
 
 .new-text {
     position: absolute;

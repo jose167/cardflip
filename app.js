@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             isRotated = true;
     });
     buttonBack.addEventListener( 'click', function() {
-        deg = isRotated ? (deg - 180) : deg;
+        deg -=  180;
         card.style.transform = 'rotateY('+deg+'deg)';
         frontFace.classList.remove("remove");
         frontFace.classList.remove('hide');
