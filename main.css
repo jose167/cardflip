@@ -1,0 +1,375 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: black;
+}
+
+div {
+    box-sizing: border-box;
+} 
+
+h1, h2, h3, h4, h5, p {
+    margin: 0; 
+}
+
+/*
+ *
+ * containers front
+ *
+ */
+
+ #card-container-front {
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(138, 108, 108, 0.26);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row; 
+    height: 250px;
+    backface-visibility: hidden;
+    width: 100%;
+    transition: opacity 500ms linear;
+}
+
+#card-img {
+  width: 35%;
+  position: relative;
+  background-image: url("small-cube.jpg");
+  background-size: cover;
+
+}
+
+#card-text {
+  background-color: white; 
+  width: 65%;   
+  padding: 1em;  
+}
+
+#header {
+    color: #0fa4c5;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}   
+
+#header > h1  {
+    font-size: 14px;
+    font-weight: 550;
+}
+
+#header > p {
+    font-size: 20px;
+    font-weight: 700;
+}
+#section > .title {
+    font-weight: 1000;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+/*
+ *
+ * Container back
+ *
+ */
+
+#card-container-back{
+    position: absolute;
+    padding: 12px;
+    height: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    margin-left: auto;
+    margin-right: auto;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    background-color:white;
+    width: 100%;
+}
+
+.title-tsCs {
+    font-weight: 800;
+    font-size: 13px;
+}
+
+/*
+ *
+   Scroll-box 
+ */
+
+.scroll-container{
+    position: relative;  
+ }
+
+ .scroll-box {
+     max-height: 70px; 
+     overflow-y: scroll;                
+ }
+
+ .tsCs-overlay{
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 50px;
+     background-image: linear-gradient(to bottom,transparent, white );
+ }
+
+ /*
+  * Buttons 
+  */
+
+ button {
+    font-weight: 500;
+    border: none;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    font-size: 11px;
+    color: #404040;
+    
+}
+
+#card-text > #buttons {
+    margin-top: 10px;
+    position: relative; 
+}
+
+#card-container-back > #buttons {
+    margin-top: 35px;
+    position: relative; 
+} 
+
+.joinNow-btn {
+    text-transform: uppercase;
+    width: 100%;
+    height: 35px;
+    background-color: #FDBE0F;
+}
+.findOutMore-btn {
+    text-transform: uppercase;
+    float: right;
+}
+.findOutMore-btn, #tsCs-btn  {
+    width: 45%;
+    height: 35px;
+    background-color: #E0E0E0;
+}
+
+.btn-overlay, .back-btn-overlay{
+        display: none;
+}
+
+.joinNow-btn:active ~ .btn-overlay, .findOutMore-btn:active ~ .btn-overlay {
+    display: block;
+    position: absolute;
+    padding: 5px;
+    bottom: 4px;
+    left: 0;
+    width: 41%;
+    height: 35%;
+    background-color: #0f73c526;;
+    z-index: 2;
+    border: 2px solid #0f738a;
+}
+
+.click-container:active > .back-btn-overlay, .joinNowBack-btn:active ~ .back-btn-overlay {
+    display: block;
+    position: absolute;
+    padding: 8px;
+    bottom: 21%;
+    left: 7px;
+    width: 59px;
+    height: 10%;
+    background-color: #0f73c526;
+    z-index: 2;
+    border: 2px solid #0f738a;
+}
+
+.joinNowBack-btn:active ~ .back-btn-overlay {
+    display: block;
+    position: absolute;
+    padding: 8px;
+    bottom: 12%;
+    left: -6px;
+    width: 60px;
+    height: 55%;
+    background-color: #0f73c526;
+    z-index: 2;
+    border: 2px solid #0f738a;
+}
+
+#tsCs-btn > img, .back-btn > img {
+    width: 15px;
+    height: 10px; 
+}
+#tsCs-btn > img{
+    display: none;
+}
+
+#tsCs-btn:hover{
+   background-color: #C8C8C8; 
+}
+#tsCs-btn:hover img{ 
+    position: absolute;
+    display: inline-block;
+    left: 5%;
+}
+.back-btn {
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.joinNowBack-btn{
+    padding: 10px 35px 10px 35px;
+    text-transform: uppercase;
+    background-color: #ffcd11;
+    margin-left: 10px;
+}
+
+#card-container-back > #buttons {
+        margin-top: 30px;
+}
+
+/*
+ *
+ *
+    Card flip effect
+ *
+*/
+
+ .flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    height: 200px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+   
+}
+
+.card-inner.is-flipped{
+    transform: rotateY(180deg);
+}
+.card-inner.is-flipped2{
+    transform: rotateY(360deg);
+}
+
+
+.new-text {
+    position: absolute;
+    right: 2%;
+    z-index: 2;
+    top: 4%;
+    font-size: 12px;
+    font-weight: 900;
+    transform: rotate(40deg);
+    background-color: #ffcd11;
+    padding: 8px;
+    border-radius: 100px / 50px;
+}
+
+.hide {
+    opacity: 0;
+}
+.remove {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+
+    .flip-card {
+        margin: auto;
+        max-width: 600px;
+    }
+    
+    #card-container-front, #card-container-back  {
+        width: 600px;
+        height: 200px;
+    }
+
+    #card-text > #buttons {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between;
+    }
+
+    .joinNow-btn {
+        order: 3;
+    }
+
+    .findOutMore-btn, #tsCs-btn, .joinNow-btn {
+        width: 30%;
+        height: 25px;
+    }
+
+    #header > h1  {
+        font-size: 1.4em;
+    }
+
+    #header > p {
+        font-size: 2.2em;
+    }
+
+    .joinNow-btn:active ~ .btn-overlay, .findOutMore-btn:active ~ .btn-overlay {
+        padding: 7px;
+        bottom: 4px;
+        left: 0;
+        width: 25%;
+        height: 55%;
+        background-color: #0f73c526;;
+        z-index: 2;
+        border: 2px solid #0f738a;
+    }
+
+    .new-container { 
+        position: absolute;
+        top: 0;
+        filter: drop-shadow(0px 3px 2px rgba(0,0,0,0.26));
+        width: 100%;
+        height: 100%;              
+    }
+
+    .new-shape {
+        position: absolute;
+        top: 0;
+        width:100%;
+        height:100%;
+        background: #ffcd11;
+        shape-outside: polygon(378px 99px, 378px 49px, 323px 0px, 265px -1px); 
+        clip-path:polygon(378px 99px, 378px 49px, 323px 0px, 265px -1px);
+        }
+
+    .new-text {
+        right: 1%;
+        top: 10%;
+        font-size: 25px;
+        padding: 0px;
+        background-color: transparent;
+    }
+
+    .click-container:active > .back-btn-overlay { 
+        bottom: 3%;
+        height: 12%;
+    }
+
+    #card-container-back > #buttons {
+        margin-top: 20px;
+    } 
+
+}
+@media screen and (max-width: 500px) {
+    
+    #card-container-front {
+        height: 280px;
+    }
+}

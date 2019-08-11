@@ -3,385 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <meta itemprop="image" content="images/icon.png">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>888 TEST</title>
-    <link rel="icon" sizes="192x192" href="images/icon.png">
+    <title>Frontend Developer Test</title>
     <link rel="stylesheet" href="main.css" />
+    <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-            color: black;
-        }
-
-        div {
-            box-sizing: border-box;
-        } 
-      
-        h1, h2, h3, h4, h5, p {
-            margin: 0; 
-        }
-
-        /** containers front **/ 
-
-        #card-container-front {
-            position: absolute;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            flex-direction: row; 
-            height: 250px;
-            backface-visibility: hidden;
-            width: 100%;
-            transition: opacity 500ms linear;
-        }
-        
-        #card-img {
-          width: 35%;
-          position: relative;
-          background-image: url("small-cube.jpg");
-          background-size: cover;
-        
-        }
-        
-        #card-text {
-          background-color: white; 
-          width: 65%;   
-          padding: 1em;  
-        }
-
-        #header {
-            color: #0fa4c5;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }   
-
-        #header > h1  {
-            font-size: 12px;
-            font-weight: 550;
-        }
-
-        #header > p {
-            font-size: 18px;
-            font-weight: 700;
-        }
-        #section > .title {
-            font-weight: 1000;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-
-/*
-*
-Scroll-box */
-        .scroll-container{
-           position: relative;  
-        }
-
-        .scroll-box {
-            max-height: 70px; /* maximum height of the box */
-            overflow-y: scroll;                
-        }
-
-        .tsCs-overlay{
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background-image: linear-gradient(to bottom,transparent, white );
-        }
-
-/*
-*
-* Container back */ 
-
-        #card-container-back{
-            position: absolute;
-            padding: 12px;
-            height: 250px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-            margin-left: auto;
-            margin-right: auto;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
-            background-color:white;
-            width: 100%;
-        }
-
-        .title-tsCs {
-            font-weight: 800;
-            font-size: 13px;
-        }
-                        
-
-/** Buttons */
-
-        #buttons {
-            margin-top: 10px;
-            position: relative; 
-        } 
-
-        button {
-            font-weight: 500;
-            border: none;
-            padding: 5px 5px;
-            margin-bottom: 10px;
-            font-size: 11px;
-            color: #404040;
-            
-        }
-
-        .joinNow-btn {
-            text-transform: uppercase;
-            width: 100%;
-            height: 35px;
-            background-color: #FDBE0F;
-        }
-        .findOutMore-btn {
-            text-transform: uppercase;
-            float: right;
-        }
-        .findOutMore-btn, #tsCs-btn  {
-            width: 45%;
-            height: 35px;
-            background-color: #E0E0E0;
-        }
-
-        .btn-overlay{
-                display: none;
-        }
-
-        .joinNow-btn:active ~ .btn-overlay, .findOutMore-btn:active ~ .btn-overlay {
-            display: block;
-            position: absolute;
-            padding: 5px;
-            bottom: 4px;
-            left: 0;
-            width: 41%;
-            height: 35%;
-            background-color: #0f73c526;;
-            z-index: 2;
-            border: 2px solid #0f738a;
-            z-index: 3;
-        }
-
-        #tsCs-btn > img, .back-btn > img {
-            width: 15px;
-            height: 10px;
-            float: left;
-            margin-left: 10px
-        }
-        .arrow-overlay {
-            position: absolute;
-            width: 20px;
-            height: 10px;
-            background-color: #E0E0E0;
-            left: 10px;
-            z-index: 1;
-        }
-
-        #tsCs-btn:hover > .arrow-overlay {
-            background-color: transparent;
-           
-        }
-        #tsCs-btn:hover { 
-            background-color: #C8C8C8;
-        }
-        .TsCs-text{
-            text-align: center;
-        }
-
-/*
-*
-* Buttons back card */
-
-        .back-btn{
-            text-transform: uppercase;
-            padding: 5px 10px 5px 10px;
-        }
-
-        .joinNowBack-btn{
-            padding: 5px 20px 5px 20px;
-            text-transform: uppercase;
-            background-color: #ffcd11;
-        }
-/*
-*
-*
-    Card flip
- *
- */
-        .flip-card {
-            background-color: transparent;
-            perspective: 1000px;
-            height: 200px;
-        }
-
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-           
-        }
-/*
-        .flip-card:hover .card-inner {
-            transform: rotateY(180deg);
-        }
-        */
-
-        .card-inner.is-flipped{
-                   transform: rotateY(180deg);
-        }
-
-        @media screen and (min-width: 600px) {
-            body {
-                 font-size: 12px;
-            }
-
-            .flip-card {
-                margin: auto;
-                max-width: 600px;
-            }
-            
-            #card-container-front, #card-container-back  {
-                width: 600px;
-                height: 200px;
-            }
-
-            #card-text > #buttons {
-                display: flex;
-                flex-direction: row; 
-                justify-content: space-between;
-            }
-
-            .joinNow-btn {
-                order: 3;
-            }
-
-            .findOutMore-btn, #tsCs-btn, .joinNow-btn {
-                width: 30%;
-                height: auto;
-            }
-
-            #header > h1  {
-                font-size: 1.4em;
-            }
-
-            #header > p {
-                font-size: 2.2em;
-            }
-  
-            
-            .joinNow-btn:active ~ .btn-overlay, .findOutMore-btn:active ~ .btn-overlay {
-                padding: 7px;
-                bottom: 4px;
-                left: 0;
-                width: 25%;
-                height: 50%;
-                background-color: #0f73c526;;
-                z-index: 2;
-                border: 2px solid #0f738a;
-            }
-            .new-shape {
-                position: absolute;
-                top: 0;
-                width:100%;
-                height:100%;
-                background: #ffcd11;
-                shape-outside: polygon(378px 99px, 378px 49px, 323px 0px, 265px -1px); 
-                clip-path:polygon(378px 99px, 378px 49px, 323px 0px, 265px -1px);
-                }
-            .new-text {
-                position: absolute;
-                right: 1%;
-                z-index: 2;
-                top: 10%;
-                font-size: 25px;
-                font-weight: 900;
-                transform: rotate(40deg);
-            }
-
-
-
-        }
-
-      /*
-            @media screen and (min-width: 1050px) {
-                
-                #card-img {
-                    height: 200px;
-                }
-        
-                #card-text { 
-                    height: 200px;
-                } 
-     
-                #header > h1  {
-                  font-size: 1.5em;
-                }
-
-                #header > p {
-                    font-size: 2.5em;
-                }
-            }
-          */  
-       
-
-.hide {
-    opacity: 0;
-}
-.remove {
-    display: none;
-}
-
-      
-      </style>
-      <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            var card = document.querySelector('.card-inner');
-            var buttonFront =  document.getElementById("tsCs-btn");
-            var buttonBack =  document.querySelector(".back-btn");
-            var frontFace = document.getElementById("card-container-front");
-
-
-            buttonFront.addEventListener( 'click', function() {
-                card.classList.add('is-flipped');
-                frontFace.classList.add('hide');
-                setTimeout(
-                    function Remove() {
-                        frontFace.classList.add("remove");
-                    },
-                    500 );
-
-            });
-            buttonBack.addEventListener( 'click', function() {
-                frontFace.classList.remove("remove");
-                frontFace.classList.remove('hide');
-                card.classList.remove('is-flipped');
-            });
-        });
-      </script>
     <div class="flip-card">
         <div class="card-inner">
             <div id="card-container-front">
                 <div id="card-img"></div>
-                <div id="card-text">
+                <div id="card-text"> 
                     <span class="new-text">NEW</span>
-                    <div class="new-shape"></div>
+                    <div class="new-container">      
+                        <div class="new-shape"></div>
+                    </div>
                     <div id="header">
                         <h1>Betbright casino</h1>
                         <p>£1000 Bonus</p>
@@ -393,9 +29,9 @@ Scroll-box */
                         <p class="text-card">Place a single bet up to £30 on any sport in our Sportsbook</p>
                     </div>
                     <div id="buttons">                   
-                        <button class="joinNow-btn" onclick="">Join Now</button>                   
-                        <button id="tsCs-btn"><img src='arrow2.png'>
-                            <span class="arrow-overlay"></span>
+                        <button class="joinNow-btn">Join Now</button>                   
+                        <button id="tsCs-btn">
+                            <img src='arrow2.png'>
                             <span class="TsCs-text">Ts&Cs</span>                           
                         </button>
                         <button class="findOutMore-btn">Find out more</button>
@@ -404,40 +40,44 @@ Scroll-box */
                 </div>
             </div>   
             <div id="card-container-back">
-                <div id="header">
-                    <h1>Casino Bonus</h1>
-                </div>
-                <div id="term-conditions">
-                    <p class="title-tsCs">Terms & Conditions</p>
-                    <div class="scroll-container">
-                        <div class="scroll-box" >
-                            <p>Terms and Conditions agreements act as a legal contract between you (the company) 
-                                who has the website or mobile app and the user who access your website and mobile app.
-                                Having a Terms and Conditions agreement is completely optional. No laws require you to have one.
-                                Not even the super-strict and wide-reaching General Data Protection Regulation (GDPR).
-                                It’s up to you to set the rules and guidelines that the user must agree to. You can think 
-                                of your Terms and Conditions agreement as the legal agreement where you maintain your rights 
-                                to exclude users from your app in the event that they abuse your app, where you maintain your
-                                legal rights against potential app abusers, and so on.
-                                Terms and Conditions agreements act as a legal contract between you (the company) who has the website
-                                or mobile app and the user who access your website and mobile app. Having a Terms and Conditions agreement is
-                                completely optional. No laws require you to have one. Not even the super-strict and wide-reaching General
-                                Data Protection Regulation (GDPR). It’s up to you to set the rules and guidelines that the user must agree to.
-                                You can think of your Terms and Conditions agreement as the legal agreement where you maintain your rights to
-                                exclude users from your app in the event that they abuse your app, where you maintain your legal rights against
-                                potential app abusers, and so on.
-                            </p> 
-                        </div>
-                        <span class="tsCs-overlay"></span>   
-                    </div>       
+                <div class="click-container">
+                    <span class="back-btn-overlay"></span>  
+                    <div id="header">
+                        <h1>Casino Bonus</h1>
+                    </div>
+                    <div id="term-conditions">
+                        <p class="title-tsCs">Terms & Conditions</p>
+                        <div class="scroll-container">
+                            <div class="scroll-box" >
+                                <p>Terms and Conditions agreements act as a legal contract between you (the company) 
+                                    who has the website or mobile app and the user who access your website and mobile app.
+                                    Having a Terms and Conditions agreement is completely optional. No laws require you to have one.
+                                    Not even the super-strict and wide-reaching General Data Protection Regulation (GDPR).
+                                    It’s up to you to set the rules and guidelines that the user must agree to. You can think 
+                                    of your Terms and Conditions agreement as the legal agreement where you maintain your rights 
+                                    to exclude users from your app in the event that they abuse your app, where you maintain your
+                                    legal rights against potential app abusers, and so on.
+                                    Terms and Conditions agreements act as a legal contract between you (the company) who has the website
+                                    or mobile app and the user who access your website and mobile app. Having a Terms and Conditions agreement is
+                                    completely optional. No laws require you to have one. Not even the super-strict and wide-reaching General
+                                    Data Protection Regulation (GDPR). It’s up to you to set the rules and guidelines that the user must agree to.
+                                    You can think of your Terms and Conditions agreement as the legal agreement where you maintain your rights to
+                                    exclude users from your app in the event that they abuse your app, where you maintain your legal rights against
+                                    potential app abusers, and so on.
+                                </p> 
+                            </div>
+                            <span class="tsCs-overlay"></span>   
+                        </div>       
+                    </div>
                 </div>
                 <div id="buttons">
                     <button class="back-btn">
                         <img src='arrow2.png'>
                         <span>Back</span>
                     </button>                
-                    <button class="joinNowBack-btn">Join Now</button>                   
-                </div>   
+                    <button class="joinNowBack-btn">Join Now</button>  
+                    <span class="back-btn-overlay"></span>                                      
+                </div>
             </div>
         </div>
     </div>
